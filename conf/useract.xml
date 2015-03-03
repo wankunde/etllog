@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>monitor.path</name>
+		<value>/usr/local/LogServerLog/</value>
+		<description>本地监控文件夹</description>
+	</property>
+		<property>
+		<name>monitor.matches</name>
+		<value>^useract.*</value>
+		<description>监控文件名匹配规则</description>
+	</property>
+	<property>
+		<name>tailer.num</name>
+		<value>30</value>
+	</property>
+	<property>
+		<name>hdfs.file.prefix</name>
+		<value>/logbak/useract/</value>
+		<description>hdfs写的文件前缀</description>
+	</property>
+
+	<property>
+		<name>redis.ip</name>
+		<value>127.0.0.1</value>
+		<description>redis库ip</description>
+	</property>
+	<property>
+		<name>redis.port</name>
+		<value>6379</value>
+		<description>redis库port</description>
+	</property>
+	<property>
+		<name>event.batchSize</name>
+		<value>500</value>
+		<description>消息处理每次处理事件数</description>
+	</property>
+	<property>
+		<name>event.eventMaxSize</name>
+		<value>300000</value>
+		<description>消息处理建议最大值</description>
+	</property>
+	<property>
+		<name>event.batchSleep</name>
+		<value>50</value>
+		<description>当事件队列数小于该值时,休眠事件</description>
+	</property>
+
+	<property>
+		<name>metrics.print</name>
+		<value>true</value>
+		<description>是否打印监控数据</description>
+	</property>
+
+</configuration>

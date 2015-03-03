@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="etllog" default="deploy" basedir=".">
+	<property name="src" value="src" />
+	<property name="libs" value="libs" />
+	<property name="conf" value="conf" />
+	<property name="script" value="script" />
+	<property name="logs" value="logs" />
+
+	<property name="build" value="build" />
+	<property name="build.destjar" value="build/etllog-1.0.0.jar" />
+	<property name="build.zip" value="build/etllog.zip" />
+
+	<path id="project.classpath">
+		<fileset dir="${libs}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete dir="${logs}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build}" />
+		<mkdir dir="${build}/classes" />
+		<mkdir dir="${build}/dist" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}/classes" encoding="utf-8" source="1.7" target="1.7" deprecation="false" optimize="false" failonerror="true" debug="true" debuglevel="lines,vars,source" >
+			<classpath refid="project.classpath" />
+			<compilerarg line="-encoding UTF-8" />
+		</javac>
+	</target>
+
+	<target name="package" depends="compile">
+		<jar destfile="${build.destjar}" basedir="${build}/classes">
+			<manifest>
+				<attribute name="Main-Class" value="com.giant.etllog.EtlLog" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="dist" depends="package">
+		<copy todir="${build}/dist">
+			<fileset dir="${build}/" file="${build.destjar}" />
+			<fileset dir="${script}/" includes="startup.sh" />
+		</copy>
+		<copy todir="${build}/dist/libs">
+			<fileset dir="${libs}/" />
+		</copy>
+		<copy todir="${build}/dist/conf">
+			<fileset dir="${conf}/" />
+		</copy>
+		<mkdir dir="${build}/dist/logs" /> 
+		<zip destfile="${build.zip}" basedir="${build}/dist" />
+	</target>
+	<!--depends="dist"-->
+	<target name="deploy" depends="dist" >
+		<scp todir="root:tVqE7FzZztQMelT3cjAetihVBKG5pscq@10.10.102.151:/usr/local/etllog" file="${build.zip}" trust="true" />
+		<!--<scp todir="root:tVqE7FzZztQMelT3cjAetihVBKG5pscq@10.10.102.151:/usr/local/etllog" file="${build.destjar}" trust="true" />-->
+	</target>
+	
+	<target name="getfile">
+		<scp todir="root:660DD6910c9aA54b93fd06GT80c1aFE36aA@10.10.102.65:/usr/local/etllog/" file="F:/wankun/workspace/etllog/script/test.sh" trust="true" />
+	</target>
+</project>

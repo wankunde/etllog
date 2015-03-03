@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>hdfs.file.prefix</name>
+		<value>/logbak/obj</value>
+		<description>hdfs写的文件前缀</description>
+	</property>
+	<property>
+		<name>monitor.path</name>
+		<value>/opt/testdata</value>
+		<description>本地监控文件夹</description>
+	</property>
+	<property>
+		<name>monitor.matches</name>
+		<value>^objscenesserver.*</value>
+		<description>监控文件名匹配规则</description>
+	</property>
+	<property>
+		<name>monitor.gametype</name>
+		<value>17,38,40,7,20</value>
+		<description>
+		17	征途2
+		38	江湖
+		40	战鼓
+		7		征途怀旧版
+		20	绿色征途
+		1		征途免费版
+		</description>
+	</property>
+	<property>
+		<name>tailer.num</name>
+		<value>30</value>
+	</property>
+	<property>
+		<name>hdfs.buffer.period</name>
+		<value>60000</value>
+		<description>hdfs缓存的时间段</description>
+	</property>
+	<property>
+		<name>redis.ip</name>
+		<value>10.10.102.151</value>
+		<description>redis库ip</description>
+	</property>
+	<property>
+		<name>redis.port</name>
+		<value>6379</value>
+		<description>redis库port</description>
+	</property>
+	<property>
+		<name>event.batchSize</name>
+		<value>500</value>
+		<description>消息处理每次处理事件数</description>
+	</property>
+	<property>
+		<name>event.batchSleep</name>
+		<value>50</value>
+		<description>当事件队列数小于该值时,休眠事件</description>
+	</property>
+	
+	<property>
+		<name>mysql.interval</name>
+		<value>300000</value>
+		<description>5分钟更新一次mysql中ip映射表</description>
+	</property>
+	<property>
+		<name>mysql.url</name>
+		<value>jdbc:mysql://10.10.102.26/zoneInfo_DC?useUnicode=true&amp;characterEncoding=UTF-8&amp;rewriteBatchedStatements=true</value>
+	</property>
+	<property>
+		<name>mysql.user</name>
+		<value>datacter</value>
+	</property>
+	<property>
+		<name>mysql.password</name>
+		<value>ztgame@!@#$%^</value>
+	</property>
+
+</configuration>
